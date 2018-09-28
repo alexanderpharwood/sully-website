@@ -1,0 +1,12 @@
+RewriteEngine On
+# If an existing asset or directory is requested go to it as it is
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^ - [L]
+
+
+#do not route these extensions to index.html
+RewriteCond %{REQUEST_URI} !\.(?:css|js|jpe?g|gif|png|json)$ [NC]
+
+# If the requested resource doesn't exist, use index.html
+RewriteRule ^ index.html

@@ -1,0 +1,87 @@
+{{view:header}}
+
+<div class="page-content">
+    <div id="view-docs-middleware" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Documentation</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            {{view:docs-sidebar}}
+            <div class="col-sm">
+                <h3>Routing</h3>
+                <p><b>A basic route</b></p>
+                    <p>Your router will decide where requests to your application are sent. Here is a basic root registration:</p>
+<pre class="prettyprint">
+Sully.registerRoute({<br>
+    name: 'index',<br>
+    route: '/',<br>
+    controller: 'index',<br>
+    method: 'index',<br>
+});<br>
+</pre>
+                <p>The route "/" will be the landing/home page of your application.</p>
+                <p><b>Adding parameters</b></p>
+                <p>You may need a url which contains parameters, for example https://example.com/book/31.
+                    This should be defined like so:</p>
+<pre class="prettyprint">
+Sully.registerRoute({<br>
+    name: 'book',<br>
+    route: '/book/{id}',<br>
+    controller: 'book',<br>
+    method: 'show',<br>
+});<br>
+</pre>
+            <p>The request object in your controller will look like this:
+<pre class="prettyprint">
+{ id : "31" }
+</pre>
+            <p>For more information on the request object, see the <a href="/docs/request-object">request object docs</a>.</p>
+            <p><b>Redirects and programatic routing</b></p>
+                <p>You can redirect a request like this. Note that when redirecting from a controller you should return the redirect
+                to stop the script from continuing.</p>
+<pre class="prettyprint">
+return Sully.routeTo("/dashboard");
+</pre>
+            <p>If you want to get the route by name, you can access it through the routeProvider:</p>
+<pre class="prettyprint">
+var route = Sully.routeProvider.dashboard.route;<br>
+//or<br>
+var route = Sully.routeProvider["dashboard"].route;
+</pre>
+            <p><b>Adding middleware</b></p>
+            <p>There might be, for example, an area only authenticated users should be able to access, in which case it would be appropriate
+                to add a middleware to the route:</p>
+<pre class="prettyprint">
+Sully.registerRoute({<br>
+    name: 'dashboard',<br>
+    route: '/dashboard',<br>
+    controller: 'dashboard',<br>
+    method: 'index',<br>
+    middleware: ['authenticated'],<br>
+});<br>
+</pre class="prettyprint">
+            <p>Each element in the middleware array will be run - in that order - before the controller method or the controller's constructor.
+            For more information on middleware, see the <a href="/docs/middleware">middleware docs</a>.</p>
+            <p><b>Handling errors</b></p>
+            <p>Sully is a client side framework, so we cannot return http responses. We can, however, display an approptiate message to the user.
+            The starter project comes with an error controller and a 404 method. Your router should contain a line like this:</p>
+<pre class="prettyprint">
+Sully.registerNotFound('error', '404');
+</pre>
+            <p>The first parameter is the controller and the second is the method. Sully will automatically invoke the given controller method
+            when a route is requested which does not exist. Any additional error routes - to represent a 403, for example - should be registered
+            in the conventionl way - to which you can manually redirected the user from a controller or middleware.</p>
+            <p><b>HTML5 vs hashtag routing</b></p>
+            <p><b>Query data</b></p>
+            <p>The use of query data is only supported in HTML5 routing.</p>
+            <p><b>Configuring your server</b></p>
+            <p>There are some slight serverside tweaks needed to use the router. If you are using Apache, we provide you with a suitable .htaccess file.
+            But a similar thing can be configured in nginx or node or whatever server you choose. The idea is simply to point all request, except to
+            scripts and images, etc., to your index.html, where the Sully router will take over.</p>
+            </div>
+        </div>
+    </div>
+</div>

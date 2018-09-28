@@ -1,0 +1,39 @@
+{{view:header}}
+
+<div class="page-content">
+    <div id="view-docs-middleware" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Documentation</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            {{view:docs-sidebar}}
+            <div class="col-sm">
+                <h3>Middleware</h3>
+                <p>The middleware run nethod is called before your controller. It's a convenient way to handle things like
+                    authentication and permissions:
+<pre class="prettyprint">
+function AuthenticationMiddleware(){<br>
+<br>
+        this.run = function (request) {<br>
+<br>
+            if (!User.authenticated){<br>
+                return Sully.routeTo('/login');<br>
+            }<br>
+<br>
+            if (!User.canAccess(request.id)){<br>
+                return Sully.routeTo('/dashboard');<br>
+            }<br>
+        }<br>
+<br>
+}<br>
+<br>
+Sully.registerMiddleware('authentication', new AuthenticationMiddleware());
+</pre>
+                    <p>Middleware classes should have only one invocable method -- run.</p>
+            </div>
+        </div>
+    </div>
+</div>

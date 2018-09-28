@@ -1,0 +1,35 @@
+{
+    "builds": {
+        "production": {
+            "output": "app/build.prod.js"
+        },
+        "development": {
+            "output": "app/build.dev.js"
+        }
+    },
+    "router": "app/router.js",
+    "controllers": {
+        "index": "app/controllers/indexController.js",
+        "error": "app/controllers/errorController.js"
+    },
+    "middleware": {
+        "authentication": "app/middleware/authenticationMiddleware.js"
+    },
+    "views": {
+        "header": "app/views/header.html",
+        "footer": "app/views/footer.html",
+        "404": "app/views/404.html",
+        "index": "app/views/index.html",
+        "about": "app/views/about.html",
+        "docs": "app/views/docs/docs.html",
+        "docs-sidebar": "app/views/docs/docs-sidebar-partial.html",
+        "docs-controllers": "app/views/docs/docs-controllers.html",
+        "docs-cli": "app/views/docs/docs-cli.html",
+        "docs-middleware": "app/views/docs/docs-middleware.html",
+        "docs-views": "app/views/docs/docs-views.html",
+        "docs-routing": "app/views/docs/docs-routing.html",
+        "docs-request": "app/views/docs/docs-request.html",
+        "docs-init": "app/views/docs/docs-init.html",
+        "getting-started": "app/views/getting-started.html"
+    }
+}

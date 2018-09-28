@@ -1,0 +1,201 @@
+/**
+ * Sully css
+ *
+ */
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    outline: none;
+}
+
+html{
+    position: relative;
+    width: 100%;
+    min-height: 100% !important;
+}
+
+body {
+    width: 100%;
+    min-height: 100% !important;
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, sans-serif;
+    color: #333333;
+    background-color: #8878ff;
+}
+
+img{
+    max-width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* we need a colour pallet /*
+
+/* Grid */
+
+.sully.flex-row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.sully.col {
+    flex-basis: 100%;
+    padding: 0px 20px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.sully.flex-row.center{
+    justify-content: center;
+}
+
+.sully.col.one {
+    flex-basis: 100%;
+}
+.sully.col.two {
+    flex-basis: 50%;
+}
+.sully.col.three {
+    flex-basis: 33.333%;
+}
+.sully.col.four {
+    flex-basis: 25%;
+}
+
+.sully.no-gutters {
+    padding: 0px;
+}
+
+.sully.gutters-auto{
+    padding: 0px 10%;
+}
+
+
+/* Helpers */
+
+.hidden{
+    display: none;
+}
+
+.perfect-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-bold{
+    font-weight: bold;
+}
+
+/* Dom elements */
+
+input.sully {
+    padding: 8px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    background-color: #EAEAEA;
+    height: 30px;
+    font-size: 12px;
+}
+
+input.sully:focus {
+    border: 2px solid #2BB1FF;
+}
+
+/* Base button */
+
+.sully.btn,
+.sully.btn:visited {
+    display: inline-block;
+    padding: 9px;
+    background-color: #EAEAEA;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    text-align: center;
+    min-width: 60px;
+    height: 30px;
+    max-height: 30px;
+    cursor: pointer;
+    font-size: 12px;
+    margin: 0px !important;
+    line-height: 1;
+    vertical-align: middle;
+    color: #333333;
+}
+
+.sully.btn:active {
+    background-color: #CACACA;
+    color:
+}
+
+.sully.btn.large {
+    padding: 17px;
+    font-size: 16px;
+    height: 50px;
+    max-height: 50px;
+    min-width: 100px;
+}
+
+/* Main button*/
+
+.sully.btn.main {
+    color: #FFFFFF;
+    background-color: #2BB1FF;
+}
+
+.sully.btn.main:active {
+    background-color: #198ED2;
+}
+
+/* Helpers
+
+/* padding and margin classes
+
+color clases
+*/
+
+.sully.header {
+    height: 80px;
+    padding: 20px;
+}
+
+.sully.header .brand{
+    float: left;
+    color: white;
+}
+
+.sully.header.sticky {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%
+}
+
+.sully.header .nav-items{
+    float: right;
+}
+
+.sully.header .nav-items a{
+    margin-left: 10px;
+    color: white;
+}
+
+.sully.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px;
+    z-index: 1000;
+}

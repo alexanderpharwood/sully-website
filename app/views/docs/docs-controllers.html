@@ -1,0 +1,49 @@
+{{view:header}}
+
+<div class="page-content">
+    <div id="view-docs-controllers" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Documentation</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            {{view:docs-sidebar}}
+            <div class="col-sm">
+                <h3>Controllers</h3>
+                <p>Your controllers will handle most of your logic. Here's an example:</p>
+
+<pre class="prettyprint">function IndexController(){<br>
+    <br>
+    this.constructor = function(request){<br>
+        <br>
+    }<br>
+<br>
+    this.index = function (request) {<br>
+<br>
+    //Some data manipulation<br>
+    <br>
+        return Sully.renderView({<br>
+            view: Sully.getViewTemplate("index"),<br>
+            data: request,<br>
+            viewDidLoad: function () {<br>
+                <br>
+                //Some DOM manipulation<br>
+                <br>
+            }<br>
+        });<br>
+<br>
+    }<br>
+}<br>
+<br>
+Sully.registerController('index', new IndexController());<br>
+
+</pre>
+            <p>This is a barebones controller. It will receive a call to its index method,
+                and render a view for the user.
+                This might, for example, be the landing page of your application.</p>
+            </div>
+        </div>
+    </div>
+</div>

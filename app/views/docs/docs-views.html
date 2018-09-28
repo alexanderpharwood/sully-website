@@ -1,0 +1,87 @@
+{{view:header}}
+
+<div class="page-content">
+    <div id="view-docs-middleware" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Documentation</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            {{view:docs-sidebar}}
+            <div class="col-sm">
+                <h3>Views</h3>
+                <p><b>Basic views</b></p>
+                <p>Your views are html template files:</p>
+<pre class="prettyprint">
+&lt;div class="row"&gt;<br>
+    &lt;div class="col-md-6"&gt;<br>
+        &lt;p>Some content...&lt;/p&gt;<br>
+    &lt;/div&gt;<br>
+    &lt;div class="col-md-6"&gt;<br>
+        &lt;p&gt;Some more content...&lt;/p&gt;<br>
+    &lt;/div&gt;<br>
+&lt;/div&gt;
+</pre>
+                <p><b>Partials</b></p>
+                <p>Other views can be included as partials like this:</p>
+<pre class="prettyprint">
+&lbrace;&lbrace;view:header&rbrace;&rbrace;
+</pre>
+
+                <p><b>Building & rendering views</b></p>
+                <p>The below method will return a raw template.</p>
+<pre class="prettyprint">
+var raw = Sully.getView("index");
+</pre>
+                <p>Now you have a few options. If you are using something like Moustache or Handlebars
+                you can do your parsing here.</p>
+                <p>But Sully, of course, comes with a built in view builder:</p>
+
+<pre class="prettyprint">
+var data = {<br>
+    someContent: "This is some content...",<br>
+    someMoreContent: "This is some more content..."<br>
+}<br>
+<br>
+var built = Sully.buildView(raw, data);
+</pre>
+                <p>To make this quicker, you can attach the buildView method to the getView method like so:
+<pre class="prettyprint">
+var built = Sully.getView("index").buildView(data);
+</pre>
+                <p>You can insert data into a view like so:</p>
+<pre class="prettyprint">
+&lt;div class="row"&gt;<br>
+    &lt;div class="col-md-6"&gt;<br>
+        &lt;p>&lbrace;&lbrace;someContent&rbrace;&rbrace;&lt;/p&gt;<br>
+    &lt;/div&gt;<br>
+    &lt;div class="col-md-6"&gt;<br>
+        &lt;p&gt;&lbrace;&lbrace;someMoreContent&rbrace;&rbrace;&lt;/p&gt;<br>
+    &lt;/div&gt;<br>
+&lt;/div&gt;
+</pre>
+
+                <p>You can now render the built template to the dom:</p>
+<pre class="prettyprint">
+return Sully.renderView(built, function () {<br>
+<br>
+}, true);<br>
+</pre>
+            <p>The first parameter is the pre-built view (data inserted, partials rendered, etc.). The second parameter is
+            a function which will fire after the view has safely been loaded into the DOM. Any dom manipulation you wish
+            to perform should be done here. The third parameter is whether or not to scroll back to the top of the window
+            when the view is rendered. The first is the only required parameter, and the third will default to true.</p>
+            <p>There is an alias available to call getView, buildView, and renderView - all in one:</p>
+<pre class="prettyprint">
+return Sully.serveView("index", data, function () {<br>
+<br>
+}, true);<br>
+</pre>
+            <p>The renderView and serveView methods share some parameters. The second parameter here, however, is the data for building the view. Also, serveView expects a view's
+                name as its first parameter, wheras renderView expects a pre-build view. The first is the only required parameter.</p>
+            </div>
+        </div>
+    </div>
+</div>

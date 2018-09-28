@@ -1,0 +1,29 @@
+{{view:header}}
+
+<div class="page-content">
+    <div id="view-docs-controllers" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Documentation</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            {{view:docs-sidebar}}
+            <div class="col-sm">
+                <h3>The CLI tool</h3>
+                <p><b>Creating a new project</b></p>
+                <pre class="prettyprint lang-bash">$ sully new &lt;project-name&gt; &lt;template&gt;</pre>
+                <p>The new command will pull a project template and extract it and ensure you are all ready to go.
+                We reccomend using "starter" (without the quotes) as your template; however, you can pop any url in here
+                which points to a Sully template (zipped).</p>
+                <p><b>Building a project</b></p>
+                <pre class="prettyprint lang-bash">$ sully build &lt;options&gt;</pre>
+                <p>The build command will compile your controllers, middleware, and views. The "--prod" flag is optional,
+                    and will minify and compile the build to your specified production location. If the "--prod" flag is not specified,
+                the build will not be minified and will be compiled to your specified development location.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
