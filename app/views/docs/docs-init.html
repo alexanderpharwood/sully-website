@@ -12,7 +12,15 @@
             {{view:docs-sidebar}}
             <div class="col-sm">
                 <h3>The init method</h3>
-
+                <p>To initialise Sully, you need to call Sully.init() with the approprtiate parameters.</p>
+<pre class="prettyprint">
+Sully.init({<br>
+    container: "Sully",<br>
+    exceptionMessage: "Something went wrong there...",<br>
+});
+</pre>
+            <p>The container is the id of your main sully div. The exception message is what will be shown
+                to the user when something goes wrong. This will only be shown if a fatal error occurs.</p>
             </div>
         </div>
     </div>

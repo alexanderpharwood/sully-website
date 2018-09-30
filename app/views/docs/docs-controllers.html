@@ -23,16 +23,7 @@
     this.index = function (request) {<br>
 <br>
     //Some data manipulation<br>
-    <br>
-        return Sully.renderView({<br>
-            view: Sully.getViewTemplate("index"),<br>
-            data: request,<br>
-            viewDidLoad: function () {<br>
-                <br>
-                //Some DOM manipulation<br>
-                <br>
-            }<br>
-        });<br>
+        return Sully.serveView("index");
 <br>
     }<br>
 }<br>

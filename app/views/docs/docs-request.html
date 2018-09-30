@@ -12,7 +12,21 @@
             {{view:docs-sidebar}}
             <div class="col-sm">
                 <h3>The request object</h3>
-                
+                <p>The request object is passed into your controller. Through it, you can access
+                    things like query data, url parameters, etc.</p>
+                <p>For example, take the below route:</p>
+<pre class="prettyprint">
+Sully.registerRoute({<br>
+    name: 'book',<br>
+    route: '/book/{id}',<br>
+    controller: 'book',<br>
+    method: 'show',<br>
+});<br>
+</pre>
+                <p>With a url of https://example.com/book/31, your request object will look like this:</p>
+<pre class="prettyprint">
+{ id : "31" }
+</pre>
             </div>
         </div>
     </div>

@@ -75,12 +75,30 @@ Sully.registerNotFound('error', '404');
             when a route is requested which does not exist. Any additional error routes - to represent a 403, for example - should be registered
             in the conventionl way - to which you can manually redirected the user from a controller or middleware.</p>
             <p><b>HTML5 vs hashtag routing</b></p>
-            <p><b>Query data</b></p>
-            <p>The use of query data is only supported in HTML5 routing.</p>
+            <p>If your application is accessed through a browser with does not support the html5 History API then hashtag
+            routing will automatically be used. Here's an example of the saame url consumed by both methods.</p>
+<pre class="prettyprint">
+https://example.com/book/31<br>
+<br>
+https://example.com/#/book/31
+</pre>
+            <p><b>Query parameters</b></p>
+            <p>Any query parameters contained in the url will be accessible through the request object. For example,
+            parameters from a url such as https://example.com/book?id=31 will appear in the queryData parameter of the request
+            object inside your controller:</p>
+<pre class="prettyprint">
+{ requestData: { id : "31" } }
+</pre>
+            <p>Note: The use of query data is only supported when using HTML5 routing method.</p>
+            <p><b>Links</b></p>
+            Sully with automatically intercept the event when the user clicks on an anchor tag, and pass the request on to the router.
+            You can bypass this by adding the class "no-route-catch" to the anchor element.</p>
             <p><b>Configuring your server</b></p>
             <p>There are some slight serverside tweaks needed to use the router. If you are using Apache, we provide you with a suitable .htaccess file.
             But a similar thing can be configured in nginx or node or whatever server you choose. The idea is simply to point all request, except to
             scripts and images, etc., to your index.html, where the Sully router will take over.</p>
+            <p>There is also a rewrite for requests that resolve to a 404 or a 403. By default, these will route to
+            /404 and /403. You should ensure these routes remain in your router.</p>
             </div>
         </div>
     </div>
