@@ -3,15 +3,13 @@ function ErrorController(){
 
     this['404'] = function () {
 
-        return Sully.renderView({
+        return Sully.serveView('404');
 
-            template: template = Sully.getViewTemplate("404"),
+    }
 
-            viewDidLoad: function () {
+    this['403'] = function () {
 
-            }
-
-        });
+        return Sully.serveView('403');
 
     }
 

@@ -28,6 +28,12 @@
 
          }
 
+         this.releases = function (request) {
+
+             return Sully.serveView("releases");
+
+         }
+
          this.docs = function (request) {
 
              var template;

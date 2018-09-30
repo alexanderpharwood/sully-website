@@ -19,6 +19,20 @@ Sully.registerNotFound('error', '404');
  * @param string Method name
  */
 
+ Sully.registerRoute({
+     name: '404',
+     route: '/404',
+     controller: 'error',
+     method: '404',
+ });
+
+ Sully.registerRoute({
+      name: '403',
+      route: '/403',
+      controller: 'error',
+      method: '403',
+  });
+
 Sully.registerRoute({
     name: 'index',
     route: '/',
@@ -32,6 +46,13 @@ Sully.registerRoute({
     route: '/getting-started',
     controller: 'index',
     method: 'gettingStarted'
+});
+
+Sully.registerRoute({
+    name: 'releases',
+    route: '/releases',
+    controller: 'index',
+    method: 'releases'
 });
 
 Sully.registerRoute({
@@ -74,6 +95,12 @@ Sully.registerRoute({
              return Sully.serveView("getting-started", null, function(){
                  PR.prettyPrint();
              });
+
+         }
+
+         this.releases = function (request) {
+
+             return Sully.serveView("releases");
 
          }
 
@@ -147,15 +174,13 @@ function ErrorController(){
 
     this['404'] = function () {
 
-        return Sully.renderView({
+        return Sully.serveView('404');
 
-            template: template = Sully.getViewTemplate("404"),
+    }
 
-            viewDidLoad: function () {
+    this['403'] = function () {
 
-            }
-
-        });
+        return Sully.serveView('403');
 
     }
 
@@ -179,9 +204,11 @@ Sully.registerController('error', new ErrorController());
  }
 
 Sully.registerMiddleware('authentication', new authenticationMiddleware());
+Sully.registerView('403', '{{view:header}}<div id="view-403" class="row">    <div class="landing-center text-center">        <h1 class="text-white"><i>Woops!</i></h1>        <h4 class="text-white">You&apos;re not allowed here (403).</h4>    </div></div>');
+
 Sully.registerView('404', '{{view:header}}<div id="view-404" class="row">    <div class="landing-center text-center">        <h1 class="text-white"><i>Woops!</i></h1>        <h4 class="text-white">We couldn&apos;t find that (404).</h4>    </div></div>');
 
-Sully.registerView('header', '<!-- Navigation --><nav class="navbar navbar-expand-lg navbar-dark text-white fixed-top">  <div class="container">    <a class="navbar-brand" href="/">        <img class="brand" src="app/assets/images/logo-white.svg">    </a>    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">      <span class="navbar-toggler-icon"></span>    </button>    <div class="collapse navbar-collapse" id="navbarResponsive">      <ul class="navbar-nav ml-auto">        <li class="nav-item">          <a class="nav-link" href="/getting-started">Getting started</a>        </li>        <li class="nav-item">          <a class="nav-link" href="/docs">Documentation</a>        </li>      </ul>    </div>  </div></nav>');
+Sully.registerView('header', '<!-- Navigation --><nav class="navbar navbar-expand-lg navbar-dark text-white fixed-top">  <div class="container">    <a class="navbar-brand" href="/">        <img class="brand" src="app/assets/images/logo-white.svg">    </a>    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">      <span class="navbar-toggler-icon"></span>    </button>    <div class="collapse navbar-collapse" id="navbarResponsive">      <ul class="navbar-nav ml-auto">        <li class="nav-item">          <a class="nav-link" href="/getting-started">Getting started</a>        </li>        <li class="nav-item">          <a class="nav-link" href="/docs">Documentation</a>        </li>        <li class="nav-item">          <a class="nav-link" href="/releases">Releases</a>        </li>      </ul>    </div>  </div></nav>');
 
 Sully.registerView('footer', '<footer class="sully footer">    <div class="sully flex-row text-center">        <div class="sully col">            <p class="text-center text-light">                <a href="contact">CONTACT</a>                &nbsp;|&nbsp;                <a href="submissions">SUBMISSIONS</a>                <br>                <br>                <small>© 2018 COPYRIGHT - ALL RIGHTS RESERVED</small>            </p>          </div>    </div></footer>');
 
@@ -189,7 +216,9 @@ Sully.registerView('index', '{{view:header}}<div id="view-index" class="row">   
 
 Sully.registerView('about', '{{view:header}}<div id="view-about" class="sully flex-row">    <div class="sully col gutters-auto">        <h1 class="sec-header text-center">ABOUT</h1>        <hr>        <p>            TO VÉRA is a literary journal which focuses on writers without representation            or a large presence within the publishing industry.            <br>        </p>        <p>            Our aim is to give talented writers a voice and a chance to build their portfolio.            <br>        </p>    </div></div>{{view:footer}}');
 
-Sully.registerView('docs', '{{view:header}}<div class="page-content">    <div id="view-docs" class="container">        <div class="row">            <div class="col-sm">                <h1>Documentation</h1>                <hr>            </div>        </div>        <div class="row">            {{view:docs-sidebar}}            <div class="col-sm">                <h3>Introduction</h3>                <p>This is an introduction.</p>            </div>        </div>    </div></div>');
+Sully.registerView('releases', '{{view:header}}<div class="page-content">    <div id="view-docs" class="container">        <div class="row">            <div class="col-sm">                <ul class="docs-sidebar">                    <h3>latest stable (v1.0.1)</h3>                    <li>                        <a href="/releases/1.0.1/cjs-uncompressed.js" class="no-route-catch">CommonJS, uncompressed</a>                    </li>                    <li>                        <a href="/releases/1.0.1/cjs-compressed.js" class="no-route-catch">CommonJS, compressed</a>                    </li>                    <li>                        <a href="/releases/1.0.1/browser-uncompressed.js" class="no-route-catch">Browser, uncompressed</a>                    </li>                    <li>                        <a href="/releases/1.0.1/browser-compressed.js" class="no-route-catch">Browser, compressed</a>                    </li>                    <li>                        <a href="/releases/1.0.1/umd-uncompressed.js" class="no-route-catch">UMD, uncompressed</a>                    </li>                    <li>                        <a href="/releases/1.0.1/umd-compressed.js" class="no-route-catch">UMD, compressed</a>                    </li>                </ul>            </div>        </div>    </div></div>');
+
+Sully.registerView('docs', '{{view:header}}<div class="page-content">    <div id="view-docs" class="container">        <div class="row">            <div class="col-sm">                <h1>Documentation</h1>                <hr>            </div>        </div>        <div class="row">            {{view:docs-sidebar}}            <div class="col-sm">                <h3>Introduction</h3>                <p>Sully is a "WVC" (Whatever View Controller) framework. We make no assumptions about                your data layer, whilst providing a structure for logic and templating. It uses routing,                controllers, and views to deliver content.</p>            </div>        </div>    </div></div>');
 
 Sully.registerView('docs-sidebar', '<div class="col-sm-3">    <ul class="docs-sidebar">        <li>            <a href="/docs">Introduction</a>        </li>        <li>            <a href="/docs/cli">CLI tool</a>        </li>        <li>            <a href="/docs/controllers">Controllers</a>        </li>        <li>            <a href="/docs/middleware">Middleware</a>        </li>        <li>            <a href="/docs/routing">Routing</a>        </li>        <li>            <a href="/docs/views">Views</a>        </li>        <li>            <a href="/docs/request-object">Request object</a>        </li>        <li>            <a href="/docs/init-method">Init method</a>        </li>    </ul></div>');
 

@@ -10,3 +10,7 @@ RewriteCond %{REQUEST_URI} !\.(?:css|js|jpe?g|gif|png|json)$ [NC]
 
 # If the requested resource doesn't exist, use index.html
 RewriteRule ^ index.html
+
+Options -Indexes
+ErrorDocument 403 /Sully/website/403
+ErrorDocument 404 /Sully/website/404
