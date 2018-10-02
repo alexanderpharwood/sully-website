@@ -26,6 +26,11 @@
                 <p>The build command will compile your controllers, middleware, and views. The "--prod" flag is optional,
                     and will minify and compile the build to your specified production location. If the "--prod" flag is not specified,
                 the build will not be minified and will be compiled to your specified development location.</p>
+                <p><b>The autobuilder</b></p>
+                <pre class="prettyprint lang-bash">$ sully autobuild &lt;path&gt;</pre>
+                <p>The autobuilder will listen for changes and perform automatic builds. The path parameter is option, and will
+                tell the autobuilder to listen for changes only in the specified file or directory. If no path is specified, the autobuilder will
+                listen for changes in all files.</p>
 
             </div>
         </div>
