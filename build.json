@@ -1,10 +1,10 @@
 {
     "builds": {
         "production": {
-            "output": "app/build.prod.js"
+            "output": "app/build/build.prod.js"
         },
         "development": {
-            "output": "app/build.dev.js"
+            "output": "app/build/build.dev.js"
         }
     },
     "router": "app/router.js",

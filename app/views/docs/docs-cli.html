@@ -22,10 +22,9 @@
                 We reccomend using "starter" (without the quotes) as your template; however, you can pop any url in here
                 which points to a Sully template (zipped).</p>
                 <p><b>Building a project</b></p>
-                <pre class="prettyprint lang-bash">$ sully build &lt;options&gt;</pre>
-                <p>The build command will compile your controllers, middleware, and views. The "--prod" flag is optional,
-                    and will minify and compile the build to your specified production location. If the "--prod" flag is not specified,
-                the build will not be minified and will be compiled to your specified development location.</p>
+                <pre class="prettyprint lang-bash">$ sully build</pre>
+                <p>The build command will compile your controllers, middleware, views, and routes. It will build a development and a production
+                version, which will both be written to your specified locations in build.json.</p>
                 <p><b>The autobuilder</b></p>
                 <pre class="prettyprint lang-bash">$ sully autobuild &lt;path&gt;</pre>
                 <p>The autobuilder will listen for changes and perform automatic builds. The path parameter is option, and will
