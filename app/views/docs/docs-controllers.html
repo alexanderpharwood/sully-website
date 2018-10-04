@@ -10,19 +10,18 @@
         </div>
         <div class="row">
             {{view:docs-sidebar}}
-            <div class="col-sm">
+            <div class="col-sm-9">
                 <h3>Controllers</h3>
                 <p>Your controllers will handle most of your logic. Here's an example:</p>
 
 <pre class="prettyprint">function IndexController(){<br>
     <br>
     this.constructor = function(request){<br>
-        <br>
+        //<br>
     }<br>
 <br>
     this.index = function (request) {<br>
-<br>
-    //Some data manipulation<br>
+        //Some data manipulation<br>
         return Sully.serveView("index");
 <br>
     }<br>

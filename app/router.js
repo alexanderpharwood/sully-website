@@ -38,7 +38,6 @@ Sully.registerRoute({
     route: '/',
     controller: 'index',
     method: 'index',
-    middleware: ['authentication']
 });
 
 Sully.registerRoute({
@@ -57,7 +56,7 @@ Sully.registerRoute({
 
 Sully.registerRoute({
     name: 'docs',
-    route: '/docs{}',
+    route: '/docs',
     controller: 'index',
     method: 'docs'
 });

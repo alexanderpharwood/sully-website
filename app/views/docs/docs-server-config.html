@@ -1,0 +1,90 @@
+{{view:header}}
+
+<div class="page-content">
+    <div id="view-docs-server-config" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Documentation</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            {{view:docs-sidebar}}
+            <div class="col-sm-9">
+                <h3>Server configurtion</h3>
+                <p>There are some slight server-side tweaks needed for the router to work properly. The idea is simple: to point all requests, except for
+                scripts and images, etc., to your index.html, where the Sully router will take over. You may also with for Sully to handle errors like 404 and 403,
+                so you should specify these endpoints in your router.</p>
+
+                <p>Here are some basic, example server configuration files to get you going:
+
+                <p><b>Apache (.htaccess)</b></p>
+
+<pre class="prettyprint lang-bash">
+RewriteEngine On<br>
+<br>
+# Uncomment to force https in production<br>
+# RewriteCond %{HTTPS} off<br>
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R]<br>
+<br>
+# If an existing asset or directory is requested go to it as it is<br>
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]<br>
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d<br>
+RewriteRule ^ - [L]<br>
+<br>
+# If the requested resource doesn't exist, use index.html<br>
+RewriteRule ^ index.html<br>
+<br>
+# Error handling<br>
+# If your app is not at the root of your server,<br>
+# you will need to add the base prefix here, e.g:<br>
+# ErrorDocument 404 /directory/subdirectory/403<br>
+ErrorDocument 403 /403<br>
+ErrorDocument 404 /404<br>
+<br>
+# Do not show directory contents.<br>
+Options -Indexes
+</pre>
+
+<br>
+                <p><b>Nginx</b></p>
+
+<pre class="prettyprint lang-nginx">
+server {<br>
+    server_name Sully;<br>
+<br>
+    index index.html;<br>
+<br>
+    #This should match your base defined in index.html<br>
+    root /path/to/app;<br>
+<br>
+    location / {<br>
+        try_files $uri $uri/ /index.html;<br>
+    }<br>
+}
+</pre>
+<br>
+                <p><b>Node - Express</b></p>
+
+<pre class="prettyprint lang-javascript">
+const express = require("express");<br>
+var app = express();<br>
+<br>
+//Ignore requests with "/app/" or "/vendor/" in the url.<br>
+app.get('*/app/*', express.static(__dirname));<br>
+app.get('*/vendor/*', express.static(__dirname));<br>
+<br>
+app.all('/*', function(req, res, next) {<br>
+    res.sendFile('index.html', { root: path.resolve() });<br>
+});<br>
+<br>
+app.listen(3000);
+</pre>
+
+<br>
+                <p>The team at angular-ui have written a great FAQ article on this topic. <a href="https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions#how-to-configure-your-server-to-work-with-html5mode" class="no-route-catch" target="_blank">Check it out.</a></p>
+
+            </div>
+        </div>
+    </div>
+</div>

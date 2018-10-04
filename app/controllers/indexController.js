@@ -12,10 +12,6 @@
 
          this.index = function (request) {
 
-             // var view = Sully.getView("index").buildView({test: "Alex"});
-             //
-             // return Sully.renderView(view);
-             //
              return Sully.serveView("index");
 
          }
@@ -38,7 +34,16 @@
 
              var template;
 
+             console.log(request.feature);
+
+
              switch(request.feature){
+
+                 case "":
+
+                 template = Sully.getView("docs").buildView();
+
+                 break;
 
                  case "controllers":
 
@@ -82,9 +87,21 @@
 
                  break;
 
+                 case "server-config":
+
+                 template = Sully.getView("docs-server-config").buildView();
+
+                 break;
+
+                 case "build-json":
+
+                 template = Sully.getView("docs-build-json").buildView();
+
+                 break;
+
                  default:
 
-                 template = Sully.getView("docs").buildView();
+                 template = Sully.getView("404").buildView();
 
                  break;
              }

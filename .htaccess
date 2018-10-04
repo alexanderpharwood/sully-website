@@ -1,20 +1,23 @@
 RewriteEngine On
 
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Uncomment to force https in production
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R]
 
 # If an existing asset or directory is requested go to it as it is
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
 RewriteRule ^ - [L]
 
-
-#do not route these extensions to index.html
-RewriteCond %{REQUEST_URI} !\.(?:css|js|jpe?g|gif|png|json)$ [NC]
-
 # If the requested resource doesn't exist, use index.html
 RewriteRule ^ index.html
 
+# Error handling
+# If your app is not at the root of your server,
+# you will need to add the base prefix here, e.g:
+# ErrorDocument 404 /directory/subdirectory/403
+ErrorDocument 403 /403
+ErrorDocument 404 /404
+
+# Do not show directory contents.
 Options -Indexes
-ErrorDocument 403 /Sully/website/403
-ErrorDocument 404 /Sully/website/404

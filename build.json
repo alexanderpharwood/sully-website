@@ -12,9 +12,6 @@
         "index": "app/controllers/indexController.js",
         "error": "app/controllers/errorController.js"
     },
-    "middleware": {
-        "authentication": "app/middleware/authenticationMiddleware.js"
-    },
     "views": {
         "header": "app/views/header.html",
         "footer": "app/views/footer.html",
@@ -32,6 +29,13 @@
         "docs-routing": "app/views/docs/docs-routing.html",
         "docs-request": "app/views/docs/docs-request.html",
         "docs-init": "app/views/docs/docs-init.html",
+        "docs-server-config": "app/views/docs/docs-server-config.html",
+        "docs-build-json": "app/views/docs/docs-build-json.html",
         "getting-started": "app/views/getting-started.html"
-    }
+    },
+    "serveIgnoreRoutePaths": [
+        "vendor",
+        "app",
+        "releases"
+    ]
 }
