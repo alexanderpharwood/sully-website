@@ -1,41 +1,41 @@
 {
-    "builds": {
-        "production": {
-            "output": "app/build/build.prod.js"
+    "build": {
+        "production": "app/build/build.prod.js",
+        "development": "app/build/build.dev.js",
+        "router": "router.js",
+        "controllers": {
+            "index": "controllers/indexController.js",
+            "error": "controllers/errorController.js"
         },
-        "development": {
-            "output": "app/build/build.dev.js"
+        "views": {
+            "header": "views/header.html",
+            "footer": "views/footer.html",
+            "404": "views/404.html",
+            "403": "views/403.html",
+            "index": "views/index.html",
+            "about": "views/about.html",
+            "releases": "views/releases.html",
+            "docs": "views/docs/docs.html",
+            "docs-sidebar": "views/docs/docs-sidebar-partial.html",
+            "docs-controllers": "views/docs/docs-controllers.html",
+            "docs-cli": "views/docs/docs-cli.html",
+            "docs-middleware": "views/docs/docs-middleware.html",
+            "docs-views": "views/docs/docs-views.html",
+            "docs-routing": "views/docs/docs-routing.html",
+            "docs-request": "views/docs/docs-request.html",
+            "docs-init": "views/docs/docs-init.html",
+            "docs-server-config": "views/docs/docs-server-config.html",
+            "docs-build-json": "views/docs/docs-build-json.html",
+            "getting-started": "views/getting-started.html"
         }
     },
-    "router": "app/router.js",
-    "controllers": {
-        "index": "app/controllers/indexController.js",
-        "error": "app/controllers/errorController.js"
+    "serve": {
+        "staticPaths": [
+            "app"
+        ],
+        "port": 4000
     },
-    "views": {
-        "header": "app/views/header.html",
-        "footer": "app/views/footer.html",
-        "404": "app/views/404.html",
-        "403": "app/views/403.html",
-        "index": "app/views/index.html",
-        "about": "app/views/about.html",
-        "releases": "app/views/releases.html",
-        "docs": "app/views/docs/docs.html",
-        "docs-sidebar": "app/views/docs/docs-sidebar-partial.html",
-        "docs-controllers": "app/views/docs/docs-controllers.html",
-        "docs-cli": "app/views/docs/docs-cli.html",
-        "docs-middleware": "app/views/docs/docs-middleware.html",
-        "docs-views": "app/views/docs/docs-views.html",
-        "docs-routing": "app/views/docs/docs-routing.html",
-        "docs-request": "app/views/docs/docs-request.html",
-        "docs-init": "app/views/docs/docs-init.html",
-        "docs-server-config": "app/views/docs/docs-server-config.html",
-        "docs-build-json": "app/views/docs/docs-build-json.html",
-        "getting-started": "app/views/getting-started.html"
-    },
-    "serveIgnoreRoutePaths": [
-        "vendor",
-        "app",
-        "releases"
-    ]
+    "autobuilder": {
+        "listen": "/"
+    }
 }

@@ -1,0 +1,92 @@
+{{view:header}}
+
+<div class="page-content">
+    <div id="view-docs-init" class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Documentation</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            {{view:docs-sidebar}}
+            <div class="col-sm-9">
+                <h3>The build.json file</h3>
+                <p>Every project contains a buid.json file. It's what tells the Sully compiler how to build the project.
+                 Here is an example:</p>
+<pre class="prettyprint">
+    {<br>
+        "build": {<br>
+            "production": "app/build/build.prod.js",<br>
+            "development": "app/build/build.dev.js",<br>
+            "router": "router.js",<br>
+            "controllers": {<br>
+                "index": "controllers/IndexController.js",<br>
+                "error": "controllers/ErrorController.js"<br>
+            },<br>
+            "views": {<br>
+                "header": "views/common/header.html",<br>
+                "404": "views/404.html",<br>
+                "403": "views/403.html",<br>
+                "index": "views/index.html",<br>
+                "test": "views/test.html"<br>
+            },<br>
+            "middleware": {<br>
+                "example": "middleware/ExampleMiddleware.js"<br>
+            }<br>
+        },<br>
+        "serve": {<br>
+            "staticPaths": [<br>
+                "app"<br>
+            ],<br>
+            "port": 3000<br>
+        },<br>
+        "autobuilder": {<br>
+            "listen": "/"<br>
+        },<br>
+        "release": {<br>
+            "version": "1.0.0",<br>
+            "include": [<br>
+                "index.html"<br>
+                "app"<br>
+            ]<br>
+        }<br>
+    }<br>
+</pre>
+            <p>Here is a brakedown of each part:</p>
+            <p><b>build.production</b></p>
+            <p>The output location for your compressed, production build file.</p>
+
+            <p><b>build.development</b></p>
+            <p>The output location for your uncompressed, development build file.</p>
+
+            <p><b>build.controllers</b></p>
+            <p>A list of alll your controllers, keyed by name, with a
+                value of the location of the controller.</p>
+
+            <p><b>build.views</b></p>
+            <p>A list of alll your views, keyed by name, with a
+                value of the location of the view.</p>
+
+            <p><b>build.middleware</b></p>
+            <p>A list of alll your middleware, keyed by name, with a
+                value of the location of the middleware.</p>
+
+            <p><b>serve.staticPaths</b></p>
+            <p>A list of all files or directories the "serve" command should treat as static content
+            and not redirect to index.html. This would be used for css files, JavaScript files, and images for example.</p>
+
+            <p><b>serve.port</b></p>
+            <p>The port for the the "serve" command to use. This can also be set via the <a href="/docs/cli">command line</a>.
+                If no port is secified at all, Sully will use 3000.</p>
+
+            <p><b>autobuilder.listen</b></p>
+            <p>The file or directory for the autobuilder to watch and perform builds when files change. This can also be set via the <a href="/docs/cli">command line</a>.
+            If none is specified, Sully will listen for changes in all files.</p>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
