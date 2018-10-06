@@ -48,10 +48,10 @@ Sully.registerRoute({
 });
 
 Sully.registerRoute({
-    name: 'releases',
-    route: '/releases',
+    name: 'code',
+    route: '/code',
     controller: 'index',
-    method: 'releases'
+    method: 'code'
 });
 
 Sully.registerRoute({
@@ -93,9 +93,9 @@ Sully.registerRoute({
 
          }
 
-         this.releases = function (request) {
+         this.code = function (request) {
 
-             return Sully.serveView("releases");
+             return Sully.serveView("code");
 
          }
 
@@ -207,7 +207,7 @@ Sully.registerView('403', '{{view:header}}<div id="view-403" class="row">    <di
 
 Sully.registerView('404', '{{view:header}}<div id="view-404" class="row">    <div class="landing-center text-center">        <h1 class="text-white"><i>Woops!</i></h1>        <h4 class="text-white">We couldn&apos;t find that (404).</h4>    </div></div>');
 
-Sully.registerView('header', '<!-- Navigation --><nav class="navbar navbar-expand-lg navbar-dark text-white fixed-top">  <div class="container">    <a class="navbar-brand" href="/">        <img class="brand" src="app/assets/images/logo-white.svg">    </a>    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">      <span class="navbar-toggler-icon"></span>    </button>    <div class="collapse navbar-collapse" id="navbarResponsive">      <ul class="navbar-nav ml-auto">        <li class="nav-item">          <a class="nav-link" href="/getting-started">Getting started</a>        </li>        <li class="nav-item">          <a class="nav-link" href="/docs">Documentation</a>        </li>        <li class="nav-item">          <a class="nav-link" href="/releases">Releases</a>        </li>      </ul>    </div>  </div></nav>');
+Sully.registerView('header', '<!-- Navigation --><nav class="navbar navbar-expand-lg navbar-dark text-white fixed-top">  <div class="container">    <a class="navbar-brand" href="/">        <img class="brand" src="app/assets/images/logo-white.svg">    </a>    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">      <span class="navbar-toggler-icon"></span>    </button>    <div class="collapse navbar-collapse" id="navbarResponsive">      <ul class="navbar-nav ml-auto">        <li class="nav-item">          <a class="nav-link" href="/getting-started">Getting started</a>        </li>        <li class="nav-item">          <a class="nav-link" href="/docs">Documentation</a>        </li>        <li class="nav-item">          <a class="nav-link" href="/code">Code</a>        </li>      </ul>    </div>  </div></nav>');
 
 Sully.registerView('footer', '<footer class="sully footer">    <div class="sully flex-row text-center">        <div class="sully col">            <p class="text-center text-light">                <a href="contact">CONTACT</a>                &nbsp;|&nbsp;                <a href="submissions">SUBMISSIONS</a>                <br>                <br>                <small>© 2018 COPYRIGHT - ALL RIGHTS RESERVED</small>            </p>          </div>    </div></footer>');
 
@@ -215,7 +215,7 @@ Sully.registerView('index', '{{view:header}}<div id="view-index" class="row">   
 
 Sully.registerView('about', '{{view:header}}<div id="view-about" class="sully flex-row">    <div class="sully col gutters-auto">        <h1 class="sec-header text-center">ABOUT</h1>        <hr>        <p>            TO VÉRA is a literary journal which focuses on writers without representation            or a large presence within the publishing industry.            <br>        </p>        <p>            Our aim is to give talented writers a voice and a chance to build their portfolio.            <br>        </p>    </div></div>{{view:footer}}');
 
-Sully.registerView('releases', '{{view:header}}<div class="page-content">    <div id="view-docs" class="container">        <div class="row">            <div class="col-sm">                <ul class="docs-sidebar">                    <h3>latest stable (v1.0.1)</h3>                    <li>                        <a href="app/releases/1.0.1/sully-1.0.1.js" class="no-route-catch">Development, uncompressed</a>                    </li>                    <li>                        <a href="app/releases/1.0.1/sully-1.0.1.min.js" class="no-route-catch">Production, compressed</a>                    </li>                </ul>            </div>        </div>    </div></div>');
+Sully.registerView('code', '{{view:header}}<div class="page-content">    <div id="view-docs" class="container">        <div class="row">            <div class="col-sm">                <ul class="docs-sidebar">                    <h3>latest stable (v1.0.1)</h3>                    <li>                        <a href="app/code/1.0.1/sully-1.0.1.js" class="no-route-catch">Development, uncompressed</a>                    </li>                    <li>                        <a href="app/code/1.0.1/sully-1.0.1.min.js" class="no-route-catch">Production, compressed</a>                    </li>                </ul>            </div>        </div>    </div></div>');
 
 Sully.registerView('docs', '{{view:header}}<div class="page-content">    <div id="view-docs" class="container">        <div class="row">            <div class="col-sm">                <h1>Documentation</h1>                <hr>            </div>        </div>        <div class="row">            {{view:docs-sidebar}}            <div class="col-sm-9">                <h3>Introduction</h3>                <p>Sully is a "WVC" (Whatever View Controller) framework. We make no assumptions about                your data layer, whilst providing a structure for logic and templating. It uses routing,                controllers, and views to deliver content.</p>            </div>        </div>    </div></div>');
 

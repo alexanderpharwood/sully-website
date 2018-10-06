@@ -14,7 +14,7 @@
             "403": "views/403.html",
             "index": "views/index.html",
             "about": "views/about.html",
-            "releases": "views/releases.html",
+            "code": "views/code.html",
             "docs": "views/docs/docs.html",
             "docs-sidebar": "views/docs/docs-sidebar-partial.html",
             "docs-controllers": "views/docs/docs-controllers.html",

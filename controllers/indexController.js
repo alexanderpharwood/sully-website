@@ -24,9 +24,9 @@
 
          }
 
-         this.releases = function (request) {
+         this.code = function (request) {
 
-             return Sully.serveView("releases");
+             return Sully.serveView("code");
 
          }
 

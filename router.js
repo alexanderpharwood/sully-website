@@ -48,10 +48,10 @@ Sully.registerRoute({
 });
 
 Sully.registerRoute({
-    name: 'releases',
-    route: '/releases',
+    name: 'code',
+    route: '/code',
     controller: 'index',
-    method: 'releases'
+    method: 'code'
 });
 
 Sully.registerRoute({
