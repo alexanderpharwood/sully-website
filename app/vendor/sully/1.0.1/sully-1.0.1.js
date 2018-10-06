@@ -173,6 +173,16 @@
 
                 }
 
+            } else {
+
+                if (getHashRouteFromUrl() !== "" && getHtml5RouteFromUrl() === ""){
+
+                    var html5Route = "/" + getHashRouteFromUrl();
+
+                    return window.location.replace(window.location.origin + getBasePath(html5Route));
+
+                }
+
             }
 
             routeParams.request = {};
