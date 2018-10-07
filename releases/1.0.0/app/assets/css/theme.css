@@ -1,0 +1,128 @@
+/*!
+ * Start Bootstrap - Full (https://startbootstrap.com/template-overviews/full)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-full/blob/master/LICENSE)
+ */
+
+html{
+    height: 100%;
+    width: 100%;
+}
+body {
+    background: #4776E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
+    width: 100%;
+    padding-top: 60px;
+    position: relative;
+    background-image:
+}
+
+#exceptionMessage{
+    text-align: center;
+    margin: 30px auto;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 20px;
+}
+
+p{
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+.btn{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.text-white{
+    color: #FFFFFF;
+}
+
+#Sully{
+    height: 100%;
+}
+
+.page-content{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    min-height: 100%;
+    background-color: #FFFFFF;
+}
+
+.navbar{
+    background: #4776E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8E54E9, #4776E6);
+}
+
+.navbar img.brand{
+    height: 30px;
+}
+
+.landing-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.landing-logo{
+    height: 100px;
+}
+
+.landing-center p{
+    margin-top: 20px;
+    color: white;
+}
+
+.btn.custom-main{
+    background-color: #7b5ee8;
+}
+
+pre{
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    display: inline-block;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;    
+}
+
+pre.npm{
+    color: white;
+    margin: 0 auto 20px;
+    width: 200px;
+    display: block;
+}
+
+nav{
+    background-color: transparent !important;
+}
+
+nav .navbar-nav li a{
+  color: white !important;
+}
+
+ nav .navbar-brand{
+   color: white !important;
+ }
+
+ .docs-sidebar{
+     list-style: none;
+     padding-left: 0px;
+ }

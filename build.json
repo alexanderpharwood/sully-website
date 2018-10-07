@@ -1,7 +1,13 @@
 {
+    "app": {
+        "name": "Sully website",
+        "version": "1.0.0"
+    },
     "build": {
-        "production": "app/build/build.prod.js",
-        "development": "app/build/build.dev.js",
+        "output": "app/build/app.js",
+        "scripts": [
+            "scripts/entry.js"
+        ],
         "router": "router.js",
         "controllers": {
             "index": "controllers/indexController.js",
@@ -36,6 +42,17 @@
         "port": 4000
     },
     "autobuilder": {
-        "listen": "/"
+        "path": "",
+        "ignore": [
+            "app/build"
+        ]
+    },
+    "release": {
+        "version": "1.0.0",
+        "include": [
+            "index.html",
+            ".htaccess",
+            "app"
+        ]
     }
 }

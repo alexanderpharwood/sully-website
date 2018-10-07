@@ -15,50 +15,52 @@
                 <p>Every project contains a buid.json file. It's what tells the Sully compiler how to build the project.
                  Here is an example:</p>
 <pre class="prettyprint">
-    {<br>
-        "build": {<br>
-            "production": "app/build/build.prod.js",<br>
-            "development": "app/build/build.dev.js",<br>
-            "router": "router.js",<br>
-            "controllers": {<br>
-                "index": "controllers/IndexController.js",<br>
-                "error": "controllers/ErrorController.js"<br>
-            },<br>
-            "views": {<br>
-                "header": "views/common/header.html",<br>
-                "404": "views/404.html",<br>
-                "403": "views/403.html",<br>
-                "index": "views/index.html",<br>
-                "test": "views/test.html"<br>
-            },<br>
-            "middleware": {<br>
-                "example": "middleware/ExampleMiddleware.js"<br>
-            }<br>
+{<br>
+    "build": {<br>
+        "output": "app/build/app.js",<br>
+        "scripts": [<br>
+            "scripts/entry.js"<br>
+        ],<br>
+        "router": "router.js",<br>
+        "controllers": {<br>
+            "index": "controllers/IndexController.js",<br>
+            "error": "controllers/ErrorController.js"<br>
         },<br>
-        "serve": {<br>
-            "staticPaths": [<br>
-                "app"<br>
-            ],<br>
-            "port": 3000<br>
+        "views": {<br>
+            "header": "views/common/header.html",<br>
+            "404": "views/404.html",<br>
+            "403": "views/403.html",<br>
+            "index": "views/index.html",<br>
+            "test": "views/test.html"<br>
         },<br>
-        "autobuilder": {<br>
-            "listen": "/"<br>
-        },<br>
-        "release": {<br>
-            "version": "1.0.0",<br>
-            "include": [<br>
-                "index.html"<br>
-                "app"<br>
-            ]<br>
+        "middleware": {<br>
+            "example": "middleware/ExampleMiddleware.js"<br>
         }<br>
+    },<br>
+    "serve": {<br>
+        "staticPaths": [<br>
+            "app"<br>
+        ],<br>
+        "port": 3000<br>
+    },<br>
+    "autobuilder": {<br>
+        "path": "",<br>
+        "ignore": [<br>
+            "app/build"<br>
+        ]<br>
+    },<br>
+    "release": {<br>
+        "version": "1.0.0",<br>
+        "include": [<br>
+            "index.html",<br>
+            "app"<br>
+        ]<br>
     }<br>
+}<br>
 </pre>
             <p>Here is a brakedown of each part:</p>
-            <p><b>build.production</b></p>
-            <p>The output location for your compressed, production build file.</p>
-
-            <p><b>build.development</b></p>
-            <p>The output location for your uncompressed, development build file.</p>
+            <p><b>build.output</b></p>
+            <p>The output location for your build JavaScript file. A compressed version will also be generated, with the suffix of ".min.js".</p>
 
             <p><b>build.controllers</b></p>
             <p>A list of alll your controllers, keyed by name, with a
@@ -78,11 +80,22 @@
 
             <p><b>serve.port</b></p>
             <p>The port for the the "serve" command to use. This can also be set via the <a href="/docs/cli">command line</a>.
-                If no port is secified at all, Sully will use 3000.</p>
+                If no port is specified, Sully will use 3000.</p>
 
-            <p><b>autobuilder.listen</b></p>
+            <p><b>autobuilder.path</b></p>
             <p>The file or directory for the autobuilder to watch and perform builds when files change. This can also be set via the <a href="/docs/cli">command line</a>.
             If none is specified, Sully will listen for changes in all files.</p>
+
+            <p><b>autobuilder.ignore</b></p>
+            <p>A list of files and/or directories to ignore on change. You should ensure that your build output location is in this list
+            to avoid the autobuilder looping.</p>
+
+
+            <p><b>release.version</b></p>
+            <p>The version of the release to build.</p>
+
+            <p><b>release.include</b></p>
+            <p>An array of files and/or directories to include in the release.</p>
 
             </div>
 

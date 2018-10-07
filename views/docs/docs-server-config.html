@@ -13,7 +13,7 @@
             <div class="col-sm-9">
                 <h3>Server configurtion</h3>
                 <p>There are some slight server-side tweaks needed for the router to work properly. The idea is simple: to point all requests, except for
-                scripts and images, etc., to your index.html, where the Sully router will take over. You may also with for Sully to handle errors like 404 and 403,
+                scripts and images, etc., to your index.html, where the Sully router will take over. You may also wish for Sully to handle errors like 404 and 403,
                 so you should specify these endpoints in your router.</p>
 
                 <p>Here are some basic, example server configuration files to get you going:
@@ -70,12 +70,11 @@ server {<br>
 const express = require("express");<br>
 var app = express();<br>
 <br>
-//Ignore requests with "/app/" or "/vendor/" in the url.<br>
+//Ignore requests with "/app/" in the url (for static content).<br>
 app.get('*/app/*', express.static(__dirname));<br>
-app.get('*/vendor/*', express.static(__dirname));<br>
 <br>
 app.all('/*', function(req, res, next) {<br>
-    res.sendFile('index.html', { root: path.resolve() });<br>
+    res.sendFile('index.html', { root: __dirname });<br>
 });<br>
 <br>
 app.listen(3000);

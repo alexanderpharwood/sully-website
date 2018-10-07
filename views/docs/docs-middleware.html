@@ -12,7 +12,7 @@
             {{view:docs-sidebar}}
             <div class="col-sm-9">
                 <h3>Middleware</h3>
-                <p>The middleware run nethod is called before your controller. It's a convenient way to handle things like
+                <p>The middleware run method is called before your controller. It's a convenient way to handle things like
                     authentication and permissions:</p>
 <pre class="prettyprint">
 function AuthenticationMiddleware(){<br>
@@ -32,7 +32,7 @@ function AuthenticationMiddleware(){<br>
 <br>
 Sully.registerMiddleware('authentication', new AuthenticationMiddleware());
 </pre>
-                    <p>Middleware classes should have only one invocable method -- run.</p>
+                    <p>Middleware classes should have only one invocable method: run.</p>
             </div>
         </div>
     </div>

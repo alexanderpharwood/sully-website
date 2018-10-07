@@ -87,18 +87,13 @@ https://example.com/#/book/31
             parameters from a url such as https://example.com/book?id=31 will appear in the queryData parameter of the request
             object inside your controller:</p>
 <pre class="prettyprint">
-{ requestData: { id : "31" } }
+{ queryData: { id : "31" } }
 </pre>
             <p>Note: The use of query data is only supported when using HTML5 routing method.</p>
             <p><b>Links</b></p>
             Sully with automatically intercept the event when the user clicks on an anchor tag, and pass the request on to the router.
             You can bypass this by adding the class "no-route-catch" to the anchor element.</p>
-            <p><b>Configuring your server</b></p>
-            <p>There are some slight serverside tweaks needed to use the router. If you are using Apache, we provide you with a suitable .htaccess file.
-            But a similar thing can be configured in nginx or node or whatever server you choose. The idea is simply to point all request, except to
-            scripts and images, etc., to your index.html, where the Sully router will take over.</p>
-            <p>There is also a rewrite for requests that resolve to a 404 or a 403. By default, these will route to
-            /404 and /403. You should ensure these routes remain in your router.</p>
+
             </div>
         </div>
     </div>
